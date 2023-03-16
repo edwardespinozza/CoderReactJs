@@ -1,0 +1,16 @@
+
+.seccion {
+    background-color: #d9f5f9;
+    padding: 15px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

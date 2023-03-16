@@ -1,0 +1,14 @@
+.cartWidget {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    background: #fbfefe;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.cartIcon {
+    width: 15px;
+    margin-right: 10px;
+}
