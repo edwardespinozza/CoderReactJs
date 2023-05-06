@@ -2,8 +2,29 @@ import './Navbar.css'
 import Button from '../Button/Button'
 import CartWidget from '../CartWidget/CartWidget'
 import { Link, NavLink } from 'react-router-dom'
+import { getCategories } from '../../asyncMock'
+import { useEffect, useState } from 'react'
+import { db } from '../../services/firebase/firebaseconfig'
+import { collection, getDocs } from 'firebase/firestore'
 
-const Nabvar = () => {
+const Nabvar = () => { 
+
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        const categoriesRef = collection(db, 'categories')
+        getDocs(categoriesRef)
+            .then(snapshot => {
+                const categoriesAdapted = snapshot.docs.map(doc => {
+                    const data = doc.data()
+                    return { id: doc.id, ...data }
+                })
+                setCategories(categoriesAdapted)
+            })
+    }, [])
+
+    console.log(categories)
+
     return (
         <nav className='seccion'>
             <div className='container'>
@@ -12,11 +33,16 @@ const Nabvar = () => {
                         <h1>MiTienda</h1>
                     </Link>
                     <div className='nav'>
-                        <NavLink to = '/category/hombres' className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Hombres</NavLink>
-                        <NavLink to = '/category/mujeres' className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Mujeres</NavLink>
-                        <NavLink to = '/category/ninios' className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Niños</NavLink>
-                        <NavLink to = '/category/accesorios' className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Accesorios</NavLink>
-                        <CartWidget />
+                        {
+                            categories.map(cat => {
+                                return (
+                                    <NavLink key={cat.id} to = {`/category/${cat.slug}`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>{cat.label}</NavLink>
+                                )
+                            })
+                        }
+                        <NavLink to = {`/cart`}>
+                            <CartWidget /> 
+                        </NavLink>
                     </div> 
                 </div>
             </div>

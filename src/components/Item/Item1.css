@@ -43,4 +43,13 @@
     color: black;
     text-decoration: none;
     font-weight: 600;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+button.buttonVerMas:hover {
+    background-color: rgb(232, 180, 10);
 }

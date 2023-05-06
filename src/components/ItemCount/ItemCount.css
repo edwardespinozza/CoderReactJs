@@ -1,0 +1,35 @@
+.bloqueSelectorCantidad {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin: auto;
+    width: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+.botonesSumarYRestar {
+    width: 40px;
+    height: 100%;
+    font-size: 20px;
+    background-color: rgb(227, 227, 227);
+}
+
+.sumar {
+    border-radius: 10px 0 0 10px;
+}
+
+.restar {
+    border-radius: 0 10px 10px 0;
+}
+
+.cantidadItems {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+

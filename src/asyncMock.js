@@ -116,11 +116,27 @@ const products = [
     }
 ];
 
+const categories = [
+    {id: '1', description: 'Hombres', slug: 'hombres'},
+    {id: '2', description: 'Mujeres', slug: 'mujeres'},
+    {id: '3', description: 'Niños', slug: 'ninios'},
+    {id: '4', description: 'Accesorios', slug: 'accesorios'},
+    {id: '5', description: 'Otros', slug: 'otritos'}
+]
+
+export const getCategories = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(categories)
+        }, 400)
+    })
+}
+
 export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products)
-        }, 2000)
+        }, 400)
     })
 }
 
@@ -128,7 +144,7 @@ export const getProductsByCategory = (categoryName) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products.filter(prod => prod.category === categoryName))
-        }, 0)
+        }, 200)
     })
 }
 
